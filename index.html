@@ -6,6 +6,9 @@
 		body {
 			background-color: #ccc;
 		}
+		label {
+			display: block;
+		}
 	</style>
 </head>
 <body>
@@ -28,112 +31,19 @@
 			Соль
 		</label>
 		<label>
-			<input type="checkbox" id="egg">
-			Яйца
+			<input type="checkbox" id="sugar">
+			Сахар
 		</label>
-		<br>
+		<label>
+			<input type="checkbox" id="oil">
+			Подсолнечное масло
+		</label>
 		<label>
 			<input type="number" id="total">
 		</label>
-		<button onclick="bakeBread()">Выпечь хлеб</button>
+		<button onclick=" transportBakedBread()">Выпечь хлеб</button>
 	</main>
 
-<script type="text/javascript">
-	// задача: вывести объект хлеба юзеру
-	// дано: вода, мука, дрожжи
-	// стадии выпечки хлеба:
-	/*
-		1. смешать ингридеенты в правильных пропорциях
-		2. поместить тесто в печьку
-		3. выпикать хлеб 30 минут
-		4. вынуть из печьки тёплый хлеб
-	*/
-	/*
-	Мука - 2,5 стакана
-	Дрожжи сухие - 1 пакетик (11 г)
-	Соль - 1,5 ч.л.
-	Сахар - 1 ст.л.
-	Вода теплая - 250 мл
-	Масло растительное - 2,5 ст.л.
-
-	Необходимо  сделать количество выпикаемых булок хлеба
-	для этого необходимо :
-	- конечное количество булок хлеба
-	- количество ингридиентов на 1 булку
-	- достаточное количество ингридиентов на складе
-
-	для выпикания булки должно быть достаточно ингридиентов на складе
-	для проверки нужно умножить количестуво булокна на количество ингредиентов в одной булкен
-	*/
-
-	// document.getElementById('water')
-
-	const kitchen = {
-		water: 10000,
-  	pouder: 2000,
-		yeast: 100,
-		salt: 100,
-		egg: 20,
-	}
-
-	const bread = {
-		water: 250,
-  	pouder: 150,
-		yeast: 11,
-		salt: 2,
-		egg: 1,
-	}
-
-	const totalBread = 3;
-
-	// const water = 	document.querySelector('#water');
-	// const pouder = 	document.querySelector('#pouder').checked;
-	// const yeast = 	document.querySelector('#yeast').checked;
-
-	function mixIngridients() {
-		let water = 	document.getElementById('water').checked;
-		let pouder = 	document.getElementById('pouder').checked;
-		let yeast = 	document.getElementById('yeast').checked;
-		let salt = 	document.getElementById('salt').checked;
-		let egg = 	document.getElementById('egg').checked;
-		// console.log(water, pouder, yeast)
-		if (water && pouder && yeast && salt && egg) {
-			alert('Тесто смешано ')
-			putDoughInOven('кирпич')
-		} else {
-			alert('Недостаточно ингредиентов')
-			return false;
-		}
-	}
-	function putDoughInOven(dough) {
-		if (dough) {
-			alert('Тесто в духовке')
-			setTimeout(takeBread, 3000)
-		} else {
-			alert('Тесто не отсутствовало')
-		}
-	}
-	function takeBread() {
-		alert('ВАШ ХЛЕБ ВЫПЕЧЕН!!!!')
-	}
-
-	function bakeBread() {
-		const totalBread = document.getElementById('total').value;
-		if (totalBread > 0) {
-
-			// kitchen.forEach(ingridient => {
-			for (ingridient in kitchen) {
-				console.log(ingridient);
-			}
-
-			for (let i = 0;  i < totalBread; i++) {
-				console.log(i);
-				mixIngridients()
-			}
-		} else {
-			alert('Неправильное количество булок')
-		}
-	}
-</script>
+	<script src="main.js"></script>
 </body>
 </html>
