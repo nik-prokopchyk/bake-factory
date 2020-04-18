@@ -16,41 +16,50 @@ const bread = {
   oil: 20,
 }
 
-/*
-Сухие дрожисмешали с мукой в большой миске
-вода, соль, сахар, масло смешивается в маленькой миске
-в большую миску добавили смесь маленькой
-замес теста
-тесто подходит
-опускание теста
-лепка формы
-викладивание хлеба на противень
-помещение заготовки в духовку
-выпикание хлеба при температуре 300C в течении 20 минут
-винуть хлеб
-попробовать
-*/
+function startBakeBread() {
+  let water = 	document.getElementById('water').value;
+  let pouder = 	document.getElementById('pouder').value;
+  let yeast = 	document.getElementById('yeast').value;
+  let salt = 	document.getElementById('salt').value;
+  let sugar = 	document.getElementById('sugar').value;
+  let oil = 	document.getElementById('oil').value;
+ console.log(water, pouder, yeast, salt, sugar, oil)
+
+  mixPouderAndYeast()
+  mixSecondaryIngridients()
+  mixAll()
+  awaitDoughComing()
+  createBreadForm()
+  putBreadFormInOven()
+  transportBakedBread()
+}
 
 function mixPouderAndYeast(pouder, yeast) {
-  return provision;
+  alert('Смешиваются основа')
+  // return provision;
 }
 function mixSecondaryIngridients(water, salt, sugar, oil) {
-  return mix;
+  alert('Смешиваются добавки')
+  // return mix;
 }
 function mixAll(provision, mix) {
-  return dough;
+  alert('Смешиваются все ингридеенты')
+  // return dough;
 }
 function awaitDoughComing(dough) {
-  return finishedDough;
+  alert('Тесто подходит')
+  // return finishedDough;-
 }
 function createBreadForm(finishedDough) {
-  return breadForm;
+  alert('Хлебу предается форма')
+  // return breadForm;
 }
 function putBreadFormInOven(breadForm) {
-  return bakedBread;
+  alert('Хлеб уложен на выпечку')
+  // return bakedBread;
 }
 function transportBakedBread(bakedBread) {
-  alert('Хлеб выпечен и успешно доставлен');
+  alert('ХЛЕБ ВЫПЕЧЕН!!!!!');
 }
 // function mixIngridients() {
 //   let water = 	document.getElementById('water').checked;
