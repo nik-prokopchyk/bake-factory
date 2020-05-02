@@ -19,8 +19,19 @@
 		fieldset h4 {
 			margin-bottom: 0;
 		}
-		table {
+		.table-warehouse {
 			float: right;
+		}
+		.table-warehouse .row {
+			display: grid;
+			grid-template-columns: 70px 100px;
+			padding: 10px;
+		}
+		.table-warehouse .row:not(:last-child) {
+			border-bottom: 1px solid #333;
+		}
+		.table-warehouse .row div:first-child {
+			font-weight: bold;
 		}
 	</style>
 </head>
@@ -28,6 +39,7 @@
 	<main>
 		<h1>Хлебопекарня им. Прокопчука Н.А.</h1>
 		<fieldset>
+			<h2>Пекарня</h2>
 			<h4>Вода:</h4>
 			<input type="number" id="water" min="0" value="0">
 			<h4>Мука:</h4>
@@ -41,43 +53,44 @@
 			<h4>Масло:</h4>
 			<input type="number" id="oil" min="0" value="0">
 		</fieldset>
-		<table>
-			<thead>
-				<tr>
-					<td>СКЛАД</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Вода</td>
-					<td>1000</td>
-				</tr>
-				<tr>
-					<td>Мука</td>
-					<td>2000</td>
-				</tr>
-				<tr>
-					<td>Дрожжи</td>
-					<td>40</td>
-				</tr>
-				<tr>
-					<td>Соль</td>
-					<td>1000</td>
-				</tr>
-				<tr>
-					<td>Сахар</td>
-					<td>1000</td>
-				</tr>
-				<tr>
-					<td>Масло</td>
-					<td>1000</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="table-warehouse">
+				<h2>Склад</h2>
+				<div class="row">
+					<div>Вода</div>
+					<div id="db-water"></div>
+				</div>
+				<div class="row">
+					<div>Мука</div>
+					<div id="db-pouder"></div>
+				</div>
+				<div class="row">
+					<div>Дрожжи</div>
+					<div id="db-yeast"></div>
+				</div>
+				<div class="row">
+					<div>Соль</div>
+					<div id="db-salt"></div>
+				</div>
+				<div class="row">
+					<div>Сахар</div>
+					<div id="db-sugar"></div>
+				</div>
+				<div class="row">
+					<div>Масло</div>
+					<div id="db-oil"></div>
+				</div>
+				<div class="row">
+					<div>Яйца</div>
+					<div id="db-egg"></div>
+				</div>
+		</div>
 		<input type="number" id="breadCounter" min="0" value="0">
 		<button onclick="startBakeBread()">Выпечь хлеб</button>
 	</main>
 
-	<script src="main.js"></script>
+
+	<script src="assets/js/db.js"></script>
+	<script src="assets/js/controller.js"></script>
+	<script src="assets/js/main.js"></script>
 </body>
 </html>
