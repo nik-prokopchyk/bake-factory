@@ -41,17 +41,17 @@
 		<fieldset>
 			<h2>Пекарня</h2>
 			<h4>Вода:</h4>
-			<input type="number" id="water" min="0" value="0">
+			<input type="number" id="water" min="0" value="300">
 			<h4>Мука:</h4>
-			<input type="number" id="pouder" min="0" value="0">
+			<input type="number" id="pouder" min="0" value="500">
 			<h4>Дрожжи:</h4>
-			<input type="number" id="yeast" min="0" value="0">
+			<input type="number" id="yeast" min="0" value="10">
 			<h4>Соль:</h4>
-			<input type="number" id="salt" min="0" value="0">
+			<input type="number" id="salt" min="0" value="7.5">
 			<h4>Сахар:</h4>
-			<input type="number" id="sugar" min="0" value="0">
+			<input type="number" id="sugar" min="0" value="20">
 			<h4>Масло:</h4>
-			<input type="number" id="oil" min="0" value="0">
+			<input type="number" id="oil" min="0" value="20">
 		</fieldset>
 		<div class="table-warehouse">
 				<h2>Склад</h2>
@@ -84,8 +84,17 @@
 					<div id="db-egg"></div>
 				</div>
 		</div>
+		<p>
+			Доступное количество булок хлеба для выпечки:
+			<b id="allowedBreads">3</b>
+			<button onclick="calculateAllowedBreads()"></button>
+		</p>
 		<input type="number" id="breadCounter" min="0" value="0">
 		<button onclick="startBakeBread()">Выпечь хлеб</button>
+		<div id="wrapper">
+
+		</div>
+
 	</main>
 
 

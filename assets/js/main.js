@@ -1,12 +1,5 @@
 function startBakeBread() {
-  let water = 	document.getElementById('water').value;
-  let pouder = 	document.getElementById('pouder').value;
-  let yeast = 	document.getElementById('yeast').value;
-  let salt = 	document.getElementById('salt').value;
-  let sugar = 	document.getElementById('sugar').value;
-  let oil = 	document.getElementById('oil').value;
- console.log(water, pouder, yeast, salt, sugar, oil)
-
+  calculateAllowedBreads()
   mixPouderAndYeast()
   mixSecondaryIngridients()
   mixAll()
@@ -14,6 +7,9 @@ function startBakeBread() {
   createBreadForm()
   putBreadFormInOven()
   transportBakedBread()
+
+  const wrapper = document.getElementById('wrapper')
+  wrapper.insertAdjacentHTML('beforebegin', '<img src="assets/images/bread.png">')
 }
 
 function mixPouderAndYeast(pouder, yeast) {
@@ -26,6 +22,7 @@ function mixSecondaryIngridients(water, salt, sugar, oil) {
 }
 function mixAll(provision, mix) {
   alert('Смешиваются все ингридеенты')
+  // console.log(provision)
   // return dough;
 }
 function awaitDoughComing(dough) {
