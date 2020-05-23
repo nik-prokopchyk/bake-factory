@@ -6,6 +6,11 @@
 		body {
 			background-color: #ccc;
 		}
+		main {
+			display:grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-column-gap: 40px;
+		}
 		label {
 			display: block;
 		}
@@ -15,12 +20,15 @@
 		fieldset {
 			display: inline-grid;
 			grid-template-columns: 50px 100px;
+			border: 1px dashed #333;
 		}
 		fieldset h4 {
 			margin-bottom: 0;
 		}
 		.table-warehouse {
 			float: right;
+			padding: 10px;
+			border: 1px dashed #333;
 		}
 		.table-warehouse .row {
 			display: grid;
@@ -33,11 +41,61 @@
 		.table-warehouse .row div:first-child {
 			font-weight: bold;
 		}
+		.block-admin {
+			padding: 10px;
+			border: 1px dashed #333;
+			float: right;
+			margin-right: 20px;
+		}
+		.block-admin button {
+			display: block;
+		}
+		.block-admin button:first-of-type {
+			margin-bottom: 15px;
+		}
+		#wrapper {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+		}
+		#wrapper img {
+			max-width: 100%;
+		}
 	</style>
 </head>
 <body>
+	<h1>Хлебопекарня им. Прокопчука Н.А.</h1>
 	<main>
-		<h1>Хлебопекарня им. Прокопчука Н.А.</h1>
+		<div class="table-warehouse">
+			<h2>Склад</h2>
+			<div class="row">
+				<div>Вода</div>
+				<div id="db-water"></div>
+			</div>
+			<div class="row">
+				<div>Мука</div>
+				<div id="db-pouder"></div>
+			</div>
+			<div class="row">
+				<div>Дрожжи</div>
+				<div id="db-yeast"></div>
+			</div>
+			<div class="row">
+				<div>Соль</div>
+				<div id="db-salt"></div>
+			</div>
+			<div class="row">
+				<div>Сахар</div>
+				<div id="db-sugar"></div>
+			</div>
+			<div class="row">
+				<div>Масло</div>
+				<div id="db-oil"></div>
+			</div>
+			<div class="row">
+				<div>Яйца</div>
+				<div id="db-egg"></div>
+			</div>
+		</div>
 		<fieldset>
 			<h2>Пекарня</h2>
 			<h4>Вода:</h4>
@@ -53,49 +111,16 @@
 			<h4>Масло:</h4>
 			<input type="number" id="oil" min="0" value="20">
 		</fieldset>
-		<div class="table-warehouse">
-				<h2>Склад</h2>
-				<div class="row">
-					<div>Вода</div>
-					<div id="db-water"></div>
-				</div>
-				<div class="row">
-					<div>Мука</div>
-					<div id="db-pouder"></div>
-				</div>
-				<div class="row">
-					<div>Дрожжи</div>
-					<div id="db-yeast"></div>
-				</div>
-				<div class="row">
-					<div>Соль</div>
-					<div id="db-salt"></div>
-				</div>
-				<div class="row">
-					<div>Сахар</div>
-					<div id="db-sugar"></div>
-				</div>
-				<div class="row">
-					<div>Масло</div>
-					<div id="db-oil"></div>
-				</div>
-				<div class="row">
-					<div>Яйца</div>
-					<div id="db-egg"></div>
-				</div>
-		</div>
-		<p>
+		<div class="block-admin">
+			<h3>Администрация</h3>
 			Доступное количество булок хлеба для выпечки:
 			<b id="allowedBreads">3</b>
-			<button onclick="calculateAllowedBreads()"></button>
-		</p>
-		<input type="number" id="breadCounter" min="0" value="0">
-		<button onclick="startBakeBread()">Выпечь хлеб</button>
-		<div id="wrapper">
-
+			<button onclick="calculateAllowedBreads()">Вычислить</button>
+			<input type="number" id="breadCounter" min="0" value="0">
+			<button style="color: white;background:red;" onclick="startBakeBread()">Выпечь хлеб</button>
 		</div>
-
 	</main>
+	<div id="wrapper"></div>
 
 
 	<script src="assets/js/db.js"></script>

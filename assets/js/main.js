@@ -9,7 +9,12 @@ function startBakeBread() {
   transportBakedBread()
 
   const wrapper = document.getElementById('wrapper')
-  wrapper.insertAdjacentHTML('beforebegin', '<img src="assets/images/bread.png">')
+  const breadCounter =  document.getElementById('breadCounter').value;
+  console.log(breadCounter);
+  for (var i = 0; i < breadCounter; i++) {
+    console.log(i);
+    wrapper.insertAdjacentHTML('beforeend', '<img src="assets/images/bread.png">')
+  }
 }
 
 function mixPouderAndYeast(pouder, yeast) {
