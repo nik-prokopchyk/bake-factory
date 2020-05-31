@@ -1,50 +1,79 @@
 function startBakeBread() {
-  calculateAllowedBreads()
-  mixPouderAndYeast()
-  mixSecondaryIngridients()
-  mixAll()
-  awaitDoughComing()
-  createBreadForm()
-  putBreadFormInOven()
-  transportBakedBread()
+  // calculateAllowedBreads()
+  // mixPouderAndYeast()
+  // mixSecondaryIngridients()
+  // mixAll()
+  // awaitDoughComing()
+  // createBreadForm()
+  // putBreadFormInOven()
+  // transportBakedBread()
 
+  bakeBread()
+}
+refreshKitchen()
+function calculateUsedIngredients() {
+  let usedIngredients;
+  let bread = getIngredients();
+  const breadCounter =  document.getElementById('breadCounter').value;
+
+  for (ingridient in bread) {
+    bread[ingridient] *= breadCounter;
+  }
+  console.log('Количество ингридеентов для булок',bread);
+  return bread;
+}
+function bakeBread() {
   const wrapper = document.getElementById('wrapper')
   const breadCounter =  document.getElementById('breadCounter').value;
-  console.log(breadCounter);
+  // console.log(breadCounter);
+  if (breadCounter <= 0) {
+    alert('Введите корректное число для выпечки')
+    return;
+  }
+  let toBeUsedIngridients =  calculateUsedIngredients()
+  // console.log(toBeUsedIngridients);
+  for (ingridient in kitchen) {
+    // console.log(toBeUsedIngridients[ingridient]);
+    if (kitchen[ingridient] - toBeUsedIngridients[ingridient] < 0 ) {
+      alert(`Нету столько ${ingridient}`)
+      return
+    }
+    kitchen[ingridient] -= toBeUsedIngridients[ingridient]
+  }
+  refreshKitchen()
   for (var i = 0; i < breadCounter; i++) {
-    console.log(i);
+    // console.log(i);
     wrapper.insertAdjacentHTML('beforeend', '<img src="assets/images/bread.png">')
   }
 }
-
-function mixPouderAndYeast(pouder, yeast) {
-  alert('Смешивается основа')
-  // return provision;
-}
-function mixSecondaryIngridients(water, salt, sugar, oil) {
-  alert('Смешиваются добавки')
-  // return mix;
-}
-function mixAll(provision, mix) {
-  alert('Смешиваются все ингридеенты')
-  // console.log(provision)
-  // return dough;
-}
-function awaitDoughComing(dough) {
-  alert('Тесто подходит')
-  // return finishedDough;-
-}
-function createBreadForm(finishedDough) {
-  alert('Хлебу предается форма')
-  // return breadForm;
-}
-function putBreadFormInOven(breadForm) {
-  alert('Хлеб уложен на выпечку')
-  // return bakedBread;
-}
-function transportBakedBread(bakedBread) {
-  alert('ХЛЕБ ВЫПЕЧЕН!!!!!');
-}
+// function mixPouderAndYeast(pouder, yeast) {
+//   alert('Смешивается основа')
+//   // return provision;
+// }
+// function mixSecondaryIngridients(water, salt, sugar, oil) {
+//   alert('Смешиваются добавки')
+//   // return mix;
+// }
+// function mixAll(provision, mix) {
+//   alert('Смешиваются все ингридеенты')
+//   // console.log(provision)
+//   // return dough;
+// }
+// function awaitDoughComing(dough) {
+//   alert('Тесто подходит')
+//   // return finishedDough;-
+// }
+// function createBreadForm(finishedDough) {
+//   alert('Хлебу предается форма')
+//   // return breadForm;
+// }
+// function putBreadFormInOven(breadForm) {
+//   alert('Хлеб уложен на выпечку')
+//   // return bakedBread;
+// }
+// function transportBakedBread(bakedBread) {
+//   alert('ХЛЕБ ВЫПЕЧЕН!!!!!');
+// }
 // function mixIngridients() {
 //   let water = 	document.getElementById('water').checked;
 //   let pouder = 	document.getElementById('pouder').checked;
