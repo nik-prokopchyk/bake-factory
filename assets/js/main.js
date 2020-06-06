@@ -1,51 +1,7 @@
-function startBakeBread() {
-  // calculateAllowedBreads()
-  // mixPouderAndYeast()
-  // mixSecondaryIngridients()
-  // mixAll()
-  // awaitDoughComing()
-  // createBreadForm()
-  // putBreadFormInOven()
-  // transportBakedBread()
 
-  bakeBread()
-}
 refreshKitchen()
-function calculateUsedIngredients() {
-  let usedIngredients;
-  let bread = getIngredients();
-  const breadCounter =  document.getElementById('breadCounter').value;
+calculateAllowedBreads()
 
-  for (ingridient in bread) {
-    bread[ingridient] *= breadCounter;
-  }
-  console.log('Количество ингридеентов для булок',bread);
-  return bread;
-}
-function bakeBread() {
-  const wrapper = document.getElementById('wrapper')
-  const breadCounter =  document.getElementById('breadCounter').value;
-  // console.log(breadCounter);
-  if (breadCounter <= 0) {
-    alert('Введите корректное число для выпечки')
-    return;
-  }
-  let toBeUsedIngridients =  calculateUsedIngredients()
-  // console.log(toBeUsedIngridients);
-  for (ingridient in kitchen) {
-    // console.log(toBeUsedIngridients[ingridient]);
-    if (kitchen[ingridient] - toBeUsedIngridients[ingridient] < 0 ) {
-      alert(`Нету столько ${ingridient}`)
-      return
-    }
-    kitchen[ingridient] -= toBeUsedIngridients[ingridient]
-  }
-  refreshKitchen()
-  for (var i = 0; i < breadCounter; i++) {
-    // console.log(i);
-    wrapper.insertAdjacentHTML('beforeend', '<img src="assets/images/bread.png">')
-  }
-}
 // function mixPouderAndYeast(pouder, yeast) {
 //   alert('Смешивается основа')
 //   // return provision;
