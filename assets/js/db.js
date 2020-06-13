@@ -1,4 +1,4 @@
-let kitchen = {
+let dataBase = {
   water: Infinity,
   pouder: 50000,
   yeast: 1000,

@@ -2,65 +2,7 @@
 <html>
 <head>
 	<title>Хлебопечка</title>
-	<style media="screen">
-		body {
-			background-color: #ccc;
-		}
-		main {
-			display:grid;
-			grid-template-columns: 1fr 1fr 1fr;
-			grid-column-gap: 40px;
-		}
-		label {
-			display: block;
-		}
-		input {
-			height: 25px;
-		}
-		fieldset {
-			display: inline-grid;
-			grid-template-columns: 50px 100px;
-			border: 1px dashed #333;
-		}
-		fieldset h4 {
-			margin-bottom: 0;
-		}
-		.table-warehouse {
-			float: right;
-			padding: 10px;
-			border: 1px dashed #333;
-		}
-		.table-warehouse .row {
-			display: grid;
-			grid-template-columns: 70px 100px;
-			padding: 10px;
-		}
-		.table-warehouse .row:not(:last-child) {
-			border-bottom: 1px solid #333;
-		}
-		.table-warehouse .row div:first-child {
-			font-weight: bold;
-		}
-		.block-admin {
-			padding: 10px;
-			border: 1px dashed #333;
-			float: right;
-			margin-right: 20px;
-		}
-		.block-admin button {
-			display: block;
-		}
-		.block-admin button:first-of-type {
-			margin-bottom: 15px;
-		}
-		#wrapper {
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-		}
-		#wrapper img {
-			max-width: 100%;
-		}
-	</style>
+	<link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
 	<h1>Хлебопекарня им. Прокопчука Н.А.</h1>
@@ -95,6 +37,7 @@
 				<div>Яйца</div>
 				<div id="db-egg"></div>
 			</div>
+			<button onclick="kitchen.addIngridients()">Купить</button>
 		</div>
 		<fieldset>
 			<h2>Пекарня</h2>
@@ -115,12 +58,30 @@
 			<h3>Администрация</h3>
 			Доступное количество булок хлеба для выпечки:
 			<b id="allowedBreads">3</b>
-			<button onclick="calculateAllowedBreads()">Вычислить</button>
+			<button onclick="administration.calculateAllowedBreads()">Вычислить</button>
 			<input type="number" id="breadCounter" min="0" value="0">
-			<button style="color: white;background:red; margin-top: 10px;" onclick="startBakeBread()">Выпечь хлеб</button>
+			<button style="color: white;background:red; margin-top: 10px;" onclick="administration.bakeBread()">Выпечь хлеб</button>
 		</div>
 	</main>
 	<div id="wrapper"></div>
+
+	<div class="modal">
+		<div class="modal-body">
+			<header>
+				<h2>Купить на склад</h2>
+				<div class="modal-close"></div>
+			</header>
+			<section>
+
+			</section>
+			<footer>
+				<button onclick="kitchen.buy()">Купить</button>
+				<button onclick="kitchen.cancel()">Отмена</button>
+			</footer>
+		</div>
+	</div>
+
+
 
 
 	<script src="assets/js/db.js"></script>

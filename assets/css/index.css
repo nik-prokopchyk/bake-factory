@@ -1,0 +1,87 @@
+body {
+  background-color: #ccc;
+}
+main {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 40px;
+}
+label {
+  display: block;
+}
+input {
+  height: 25px;
+}
+fieldset {
+  display: inline-grid;
+  grid-template-columns: 50px 100px;
+  border: 1px dashed #333;
+}
+fieldset h4 {
+  margin-bottom: 0;
+}
+.table-warehouse {
+  float: right;
+  padding: 10px;
+  border: 1px dashed #333;
+}
+.table-warehouse .row {
+  display: grid;
+  grid-template-columns: 70px 100px;
+  padding: 10px;
+}
+.table-warehouse .row:not(:last-child) {
+  border-bottom: 1px solid #333;
+}
+.table-warehouse .row div:first-child {
+  font-weight: bold;
+}
+.table-warehouse button {
+  margin-top: 10px;
+}
+.block-admin {
+  padding: 10px;
+  border: 1px dashed #333;
+  float: right;
+  margin-right: 20px;
+}
+.block-admin button {
+  display: block;
+}
+.block-admin button:first-of-type {
+  margin-bottom: 15px;
+}
+#wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+#wrapper img {
+  max-width: 100%;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.modal-body {
+  background: #eee;
+  border-radius: 3px;
+  border: 1px solid #333;
+}
+.modal-body > * {
+  padding: 10px 20px;
+}
+.modal-body > *:not(:last-child) {
+  border-bottom: 1px solid #333;
+}
+.modal-body h2 {
+  margin: 0;
+}

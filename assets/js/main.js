@@ -1,6 +1,6 @@
 
-refreshKitchen()
-calculateAllowedBreads()
+kitchen.refreshKitchen()
+administration.calculateAllowedBreads()
 
 // function mixPouderAndYeast(pouder, yeast) {
 //   alert('Смешивается основа')
