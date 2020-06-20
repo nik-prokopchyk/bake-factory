@@ -37,7 +37,7 @@
 				<div>Яйца</div>
 				<div id="db-egg"></div>
 			</div>
-			<button onclick="kitchen.addIngridients()">Купить</button>
+			<button onclick="shop.addIngridients()">Купить</button>
 		</div>
 		<fieldset>
 			<h2>Пекарня</h2>
@@ -72,11 +72,22 @@
 				<div class="modal-close"></div>
 			</header>
 			<section>
-
+				<h4>Вода:</h4>
+				<input type="number" id="modal-water" min="0" value="0">
+				<h4>Мука:</h4>
+				<input type="number" id="modal-pouder" min="0" value="0">
+				<h4>Дрожжи:</h4>
+				<input type="number" id="modal-yeast" min="0" value="0">
+				<h4>Соль:</h4>
+				<input type="number" id="modal-salt" min="0" value="0">
+				<h4>Сахар:</h4>
+				<input type="number" id="modal-sugar" min="0" value="0">
+				<h4>Масло:</h4>
+				<input type="number" id="modal-oil" min="0" value="0">
 			</section>
 			<footer>
-				<button onclick="kitchen.buy()">Купить</button>
-				<button onclick="kitchen.cancel()">Отмена</button>
+				<button onclick="shop.cancel()">Купить</button>
+				<button onclick="shop.cancel()">Отмена</button>
 			</footer>
 		</div>
 	</div>
@@ -88,6 +99,7 @@
 	<script src="assets/js/administration.js"></script>
 	<script src="assets/js/bakery.js"></script>
 	<script src="assets/js/kitchen.js"></script>
+	<script src="assets/js/shop.js"></script>
 	<script src="assets/js/main.js"></script>
 </body>
 </html>

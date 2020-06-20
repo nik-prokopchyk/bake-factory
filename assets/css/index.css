@@ -85,3 +85,6 @@ fieldset h4 {
 .modal-body h2 {
   margin: 0;
 }
+.modal-body h4 {
+  margin-bottom: 0;
+}
