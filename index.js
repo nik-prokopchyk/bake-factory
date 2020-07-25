@@ -1,8 +1,11 @@
 var express = require('express');
 var app = express();
+const path = require('path')
+
+app.use('/public', express.static('/assets'))
 
 app.get('/', function (req, res) {
-  res.send('Hello World!!!');
+  res.sendFile(path.resolve(__dirname + '/index.html'));
 });
 
 app.listen(3000, function () {

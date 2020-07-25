@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node  index.js"
   },
   "author": "nikprokopcuk\u001b[D\u001b[Dhupcuk\u001b[D\u001b[Dhuk",
   "license": "ISC",
