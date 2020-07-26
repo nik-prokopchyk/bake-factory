@@ -95,7 +95,17 @@
 
 	<script>
 		fetch(`${window.location.href}lol`, {
-			method: 'GET'
+			method: 'POST',
+			headers: {
+	      'Content-Type': 'application/json'
+	      // 'Content-Type': 'application/x-www-form-urlencoded',
+	    },
+			body: JSON.stringify({
+				'id': 'asda23dsad',
+				'from': 'Procopchuk N.A.',
+				'to': 'Mikhushkin E.A.',
+				'goods': ['milk', 'water', 'gas', 'sugar']
+			})
 		}).then(res => res.json())
 			.then(data => console.log(data))
 	</script>
