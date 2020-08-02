@@ -1,29 +1,36 @@
 
+const db = require('./creds.js');
+console.log(db);
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://root:.JJf25hGmDD!JyW@cluster0-terx7.mongodb.net/bake-factory?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${db.username}:${db.pass}@cluster0-terx7.mongodb.net/bake-factory?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("bake-factory").collection("stock");
-  // perform actions on the collection object
-  collection.insertOne({
-    waybill: 123456,
-    from: 'coca-cola',
-    to: 'me',
-    total: 5647,
-    goods: [
-      {
-        name: 'мука',
-        weight: 500,
-        amount: 3,
-        price: 32.25,
 
-      }
-    ]
-  }).then( res => {
-    console.log(res.result.ok);
-  })
-  // client.close();
-});
+try {
+  client.connect(err => {
+    const collection = client.db("bake-factory").collection("stock");
+    // perform actions on the collection object
+    collection.insertOne({
+      waybill: 123456,
+      from: 'coca-cola',
+      to: 'me',
+      total: 5647,
+      goods: [
+        {
+          name: 'мука',
+          weight: 500,
+          amount: 3,
+          price: 32.25,
+
+        }
+      ]
+    }).then( res => {
+      console.log(res.result.ok);
+    })
+    client.close();
+  });
+} catch(e) {
+  console.log(e);
+}
 
 class Receipt {
   constructor(id, from, to, goods) {
