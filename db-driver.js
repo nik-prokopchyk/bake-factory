@@ -2,7 +2,7 @@
 const db = require('./creds.js');
 const MongoClient = require('mongodb').MongoClient;
 // const uri = `mongodb+srv://${db.username}:${db.pass}@cluster0-terx7.mongodb.net/bake-factory?retryWrites=true&w=majority`;
-const uri = `mongodb+srv://root:CanYouFeelIt123@cluster0.lm9bo.mongodb.net/ha4apure?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${db.username}:${db.pass}@cluster0.lm9bo.mongodb.net/ha4apure?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 function insertPayment(id, from, to, goods) {
