@@ -1,3 +1,6 @@
+const dbMethods = require('./db-driver.js');
+// console.log(dbMethods.insertPayment())
+
 class Receipt {
   constructor(id, from, to, goods) {
     this.id = id;
@@ -8,8 +11,15 @@ class Receipt {
   log = () => {
     console.log(this.id, this.from, this.to, this.goods);
   }
-  insert = data => {
-
+  insert = () => {
+    // let a = await dbMethods.insertPayment(this.id, this.from, this.to, this.goods);
+    return new Promise((resolve, reject) => {
+      dbMethods.insertPayment(this.id, this.from, this.to, this.goods)
+        .then(res => {
+            resolve(res);
+        })
+    })
+    // console.log('api', a)
   }
 }
 

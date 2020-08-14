@@ -18,8 +18,16 @@ app.get('/lol', (req, res) => {
 app.post('/lol', (req, res) => {
   // const data = new api.goods()
   // console.log(req.json({requestBody: req.body}))
-  console.log(req.body);
-  res.send({'Nik': 'pro'})
+  // console.log(req.body);
+  const {id, from, to, goods} = req.body;
+  let newObj = new api.receipt(id, from, to, goods);
+  // console.log(Object.keys(api.receipt) )
+  // console.log('enter localhost', id, from, to, goods);
+  newObj.insert().then(b => {
+      console.log('index', b)
+      res.send(b)
+  })
+  // console.log(Object.keys(api.receipt));
 })
 
 app.get('/cek', (req, res) => {
