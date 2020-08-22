@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "watch": "nodemon ./index.js localhost 8080"
   },
   "author": "nikprokopcuk\u001b[D\u001b[Dhupcuk\u001b[D\u001b[Dhuk",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "mongodb": "^3.5.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
