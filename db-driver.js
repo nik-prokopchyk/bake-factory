@@ -1,16 +1,16 @@
 
 const db = require('./creds.js');
 const MongoClient = require('mongodb').MongoClient;
-// const uri = `mongodb+srv://${db.username}:${db.pass}@cluster0-terx7.mongodb.net/bake-factory?retryWrites=true&w=majority`;
-const uri = `mongodb+srv://${db.username}:${db.pass}@cluster0.lm9bo.mongodb.net/ha4apure?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${db.username}:${db.pass}@cluster0-terx7.mongodb.net/bake-factory?retryWrites=true&w=majority`;
+// const uri = `mongodb+srv://${db.username}:${db.pass}@cluster0.lm9bo.mongodb.net/ha4apure?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 function insertPayment(id, from, to, goods) {
   return new Promise((resolve, reject) => {
     client.connect(err => {
       // const collection = client.db("bake-factory").collection("stock")
-      client.db("ha4apure")
-        .collection("bakery")
+      client.db("bake-factory")
+        .collection("stock")
         .insertOne({
           id, from, to, goods
         }).then( res => {

@@ -94,21 +94,44 @@
 
 
 	<script>
-		fetch(`${window.location.href}lol`, {
-			method: 'POST',
-			headers: {
-	      'Content-Type': 'application/json'
-	      // 'Content-Type': 'application/x-www-form-urlencoded',
-	    },
-			body: JSON.stringify({
-				'id': 'asda23dsad',
-				'from': 'Procopchuk N.A.',
-				'to': 'Mikhushkin E.A.',
-				'goods': ['milk', 'water', 'gas', 'sugar']
-			})
-		}).then(res => res.json())
-			.then(data => console.log(data))
-	</script>
+		// fetch(`http://localhost:3000/lol`, {
+		// 	method: 'POST',
+		// 	headers: {
+	  //     'Content-Type': 'application/json'
+	  //     // 'Content-Type': 'application/x-www-form-urlencoded',
+	  //   },
+		// 	body: JSON.stringify({
+		// 		'id': 'Nikita',
+		// 		'from': 'Procopchuk N.A.',
+		// 		'to': 'Mikhushkin E.A.',
+		// 		'goods': ['milk', 'water', 'gas', 'sugar']
+		// 	})
+		// }).then(res => res.json())
+		// 	.then(data => console.log(data))
+		let b = 1;
+		const a = 1;
+		var c = 1;
+		b = 5;
+		// console.log(a);
+		function showMessage(from,parameter){
+			// alert('parameter')
+			alert(from + ': ' + parameter)
+		}
+		showMessage('Никита', 'Привет!')
+		showMessage('Никита', 'Как жизнь ?')
+		console.log(typeof 2.4867)
+		/*
+		строка
+		число
+		масивы
+		обЪекты
+		булевые значения
+		undefined
+		null
+		symbol
+		*/
+
+		</script>
 
 	<script src="assets/js/db.js"></script>
 	<script src="assets/js/administration.js"></script>
