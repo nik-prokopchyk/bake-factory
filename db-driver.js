@@ -6,6 +6,7 @@ const uri = `mongodb+srv://${db.username}:${db.pass}@cluster0-terx7.mongodb.net/
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 function insertPayment(id, from, to, goods) {
+  console.log("inspect",id, from, to, goods);
   return new Promise((resolve, reject) => {
     client.connect(err => {
       // const collection = client.db("bake-factory").collection("stock")

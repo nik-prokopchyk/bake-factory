@@ -12,8 +12,9 @@ class Receipt {
     console.log(this.id, this.from, this.to, this.goods);
   }
   insert = () => {
-    // let a = await dbMethods.insertPayment(this.id, this.from, this.to, this.goods);
+
     return new Promise((resolve, reject) => {
+      console.log("insert",this.id, this.from, this.to, this.goods);
       dbMethods.insertPayment(this.id, this.from, this.to, this.goods)
         .then(res => {
             resolve(res);

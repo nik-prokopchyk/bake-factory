@@ -15,11 +15,12 @@ app.get('/lol', (req, res) => {
   res.send({'Nik': 'pro'})
 })
 
-app.post('/lol', (req, res) => {
+app.post('/buy', (req, res) => {
   // const data = new api.goods()
   // console.log(req.json({requestBody: req.body}))
   // console.log(req.body);
   const {id, from, to, goods} = req.body;
+  console.log(id, from, to, goods);
   let newObj = new api.receipt(id, from, to, goods);
   // console.log(Object.keys(api.receipt) )
   // console.log('enter localhost', id, from, to, goods);
