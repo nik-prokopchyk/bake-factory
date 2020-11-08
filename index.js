@@ -15,6 +15,14 @@ app.get('/lol', (req, res) => {
   res.send({'Nik': 'pro'})
 })
 
+app.get('/kitchen', (req, res) => {
+  let data = new api.receipt()
+  console.log(data);
+  data.getKitchen().then(response => {
+    res.send(response)
+  })
+})
+
 app.post('/buy', (req, res) => {
   // const data = new api.goods()
   // console.log(req.json({requestBody: req.body}))

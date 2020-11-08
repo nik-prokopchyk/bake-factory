@@ -22,6 +22,14 @@ class Receipt {
     })
     // console.log('api', a)
   }
+  getKitchen = () => {
+    return new Promise((resolve, reject) => {
+      dbMethods.getKitchen()
+        .then(res => {
+          resolve(res)
+        })
+    })
+  }
 }
 
 class Goods {

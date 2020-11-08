@@ -22,6 +22,22 @@ function insertPayment(id, from, to, goods) {
   })
 }
 
+function getKitchen() {
+  return new Promise((resolve, reject) => {
+    client.connect(error => {
+      client.db('bake-factory')
+        .collection('kitchen')
+        .findOne({
+          id: 'kitchen'
+        })
+        .then(res => {
+          console.log(res);
+          resolve(res)
+        })
+    })
+  })
+}
+// getKitchen()
 /*
 Итого
 Сумма
@@ -38,5 +54,6 @@ function insertPayment(id, from, to, goods) {
 
 */
 module.exports = {
-  insertPayment: insertPayment
+  insertPayment: insertPayment,
+  getKitchen: getKitchen
 }
