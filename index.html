@@ -95,6 +95,11 @@
 	<script>
 		fetch('/kitchen').then(res => res.json()).then(res => {
 			console.log(res);
+			// kitchen.a
+			for (let key in res) {
+				dataBase[key] = res[key]
+			}
+			kitchen.refreshKitchen()
 		})
 	</script>
 

@@ -3,7 +3,9 @@ const app = express()
 const port = 3000
 const path = require('path')
 const api = require('./api')
-
+const fs = require('fs')
+// let file = fs.readFileSync('./1.mp4', 'utf8')
+// console.log(file)
 app.use('/assets', express.static('assets'))
 app.use(express.json())
 

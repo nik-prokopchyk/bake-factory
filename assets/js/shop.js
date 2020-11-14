@@ -15,6 +15,15 @@ const shop = {
     const sugar = document.getElementById("modal-sugar").value
     const oil = document.getElementById("modal-oil").value
 
+    // for (let key in dataBase) {
+    //   dataBase[key] += key 
+    // }
+    dataBase.pouder += Number(pouder)
+    dataBase.yeast += Number(yeast)
+    dataBase.salt += Number(salt)
+    dataBase.sugar += Number(sugar)
+    dataBase.oil += Number(oil)
+
     fetch(`http://localhost:3000/buy`, {
       method: 'POST',
       headers: {
@@ -26,12 +35,13 @@ const shop = {
         'from': 'Procopchuk N.A.',
         'to': 'Mikhushkin E.A.',
         'goods': {
-          water,
-          pouder,
-          yeast,
-          salt,
-          sugar,
-          oil: oil
+          // water,
+          // pouder,
+          // yeast,
+          // salt,
+          // sugar,
+          // oil: oil
+          ...dataBase
         }
       })
     }).then(res => res.json())
@@ -40,7 +50,7 @@ const shop = {
         console.log(dataBase.pouder);
         dataBase = {
           ...dataBase,
-          "pouder": dataBase.pouder +  document.getElementById("modal-pouder").value
+          // "pouder": dataBase.pouder +  document.getElementById("modal-pouder").value
         }
         kitchen.refreshKitchen()
         this.cancel()

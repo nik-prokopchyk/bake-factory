@@ -37,6 +37,25 @@ function getKitchen() {
     })
   })
 }
+
+function updateKitchen(goods) {
+  delete goods._id
+  console.log(goods);
+  return new Promise((resolve, reject) => {
+    client.connect(error => {
+      client.db('bake-factory')
+      .collection('kitchen')
+      .replaceOne(
+        {},
+        goods
+        ).then(res => {
+          
+          console.log(res)
+          resolve(res)
+        })
+    })
+  })
+}
 // getKitchen()
 /*
 Итого
@@ -55,5 +74,6 @@ function getKitchen() {
 */
 module.exports = {
   insertPayment: insertPayment,
-  getKitchen: getKitchen
+  getKitchen: getKitchen,
+  updateKitchen
 }

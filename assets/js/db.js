@@ -1,10 +1,10 @@
 let dataBase = {
   water: Infinity,
-  pouder: 50000,
-  yeast: 1000,
-  salt: 1000,
-  sugar: 5000,
-  oil: 1000,
+  pouder: 0,
+  yeast: 0,
+  salt: 0,
+  sugar: 0,
+  oil: 0,
 }
 
 

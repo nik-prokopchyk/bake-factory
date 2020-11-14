@@ -1,3 +1,4 @@
+const { response } = require('express');
 const dbMethods = require('./db-driver.js');
 // console.log(dbMethods.insertPayment())
 
@@ -15,9 +16,13 @@ class Receipt {
 
     return new Promise((resolve, reject) => {
       console.log("insert",this.id, this.from, this.to, this.goods);
-      dbMethods.insertPayment(this.id, this.from, this.to, this.goods)
-        .then(res => {
-            resolve(res);
+      // dbMethods.insertPayment(this.id, this.from, this.to, this.goods)
+      //   .then(res => {
+      //       resolve(res);
+      //   })
+      dbMethods.updateKitchen(this.goods)
+        .then(response => {
+          resolve(response)
         })
     })
     // console.log('api', a)
