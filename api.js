@@ -1,5 +1,5 @@
-const { response } = require('express');
-const dbMethods = require('./db-driver.js');
+const { response } = require("express");
+const dbMethods = require("./db-driver.js");
 // console.log(dbMethods.insertPayment())
 
 class Receipt {
@@ -11,30 +11,23 @@ class Receipt {
   }
   log = () => {
     console.log(this.id, this.from, this.to, this.goods);
-  }
+  };
   insert = () => {
-
     return new Promise((resolve, reject) => {
-      console.log("insert",this.id, this.from, this.to, this.goods);
-      // dbMethods.insertPayment(this.id, this.from, this.to, this.goods)
-      //   .then(res => {
-      //       resolve(res);
-      //   })
-      dbMethods.updateKitchen(this.goods)
-        .then(response => {
-          resolve(response)
-        })
-    })
-    // console.log('api', a)
-  }
+      console.log("insert", this.id, this.from, this.to, this.goods);
+
+      dbMethods.updateKitchen(this.goods).then((response) => {
+        resolve(response);
+      });
+    });
+  };
   getKitchen = () => {
     return new Promise((resolve, reject) => {
-      dbMethods.getKitchen()
-        .then(res => {
-          resolve(res)
-        })
-    })
-  }
+      dbMethods.getKitchen().then((res) => {
+        resolve(res);
+      });
+    });
+  };
 }
 
 class Goods {
@@ -48,13 +41,11 @@ class Goods {
 }
 
 class GoodsType {
-  constructor() {
-
-  }
+  constructor() {}
 }
 
 module.exports = {
-  'receipt': Receipt,
-  'goods': Goods,
-  'goodsType': GoodsType
-}
+  receipt: Receipt,
+  goods: Goods,
+  goodsType: GoodsType,
+};

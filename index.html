@@ -1,172 +1,123 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Хлебопечка</title>
-	<link rel="stylesheet" href="assets/css/index.css">
-</head>
-<body>
-	<h1>Хлебопекарня им. Прокопчука Н.А.</h1>
-	<main>
-		<div class="table-warehouse">
-			<h2>Склад</h2>
-			<div class="row">
-				<div>Вода</div>
-				<div id="db-water"></div>
-			</div>
-			<div class="row">
-				<div>Мука</div>
-				<div id="db-pouder"></div>
-			</div>
-			<div class="row">
-				<div>Дрожжи</div>
-				<div id="db-yeast"></div>
-			</div>
-			<div class="row">
-				<div>Соль</div>
-				<div id="db-salt"></div>
-			</div>
-			<div class="row">
-				<div>Сахар</div>
-				<div id="db-sugar"></div>
-			</div>
-			<div class="row">
-				<div>Масло</div>
-				<div id="db-oil"></div>
-			</div>
-			<div class="row">
-				<div>Яйца</div>
-				<div id="db-egg"></div>
-			</div>
-			<button onclick="shop.addIngridients()">Купить</button>
-		</div>
-		<fieldset>
-			<h2>Пекарня</h2>
-			<h4>Вода:</h4>
-			<input type="number" id="water" min="0" value="300">
-			<h4>Мука:</h4>
-			<input type="number" id="pouder" min="0" value="500">
-			<h4>Дрожжи:</h4>
-			<input type="number" id="yeast" min="0" value="10">
-			<h4>Соль:</h4>
-			<input type="number" id="salt" min="0" value="7.5">
-			<h4>Сахар:</h4>
-			<input type="number" id="sugar" min="0" value="20">
-			<h4>Масло:</h4>
-			<input type="number" id="oil" min="0" value="20">
-		</fieldset>
-		<div class="block-admin">
-			<h3>Администрация</h3>
-			Доступное количество булок хлеба для выпечки:
-			<b id="allowedBreads">3</b>
-			<button onclick="administration.calculateAllowedBreads()">Вычислить</button>
-			<input type="number" id="breadCounter" min="0" value="0">
-			<button style="color: white;background:red; margin-top: 10px;" onclick="administration.bakeBread()">Выпечь хлеб</button>
-		</div>
-	</main>
-	<div id="wrapper"></div>
+  <head>
+    <title>Хлебопечка</title>
+    <link rel="stylesheet" href="assets/css/index.css" />
+  </head>
+  <body>
+    <h1>Хлебопекарня им. Прокопчука Н.А.</h1>
+    <main>
+      <div class="table-warehouse">
+        <h2>Склад</h2>
+        <div class="row">
+          <div>Вода</div>
+          <div id="db-water"></div>
+        </div>
+        <div class="row">
+          <div>Мука</div>
+          <div id="db-pouder"></div>
+        </div>
+        <div class="row">
+          <div>Дрожжи</div>
+          <div id="db-yeast"></div>
+        </div>
+        <div class="row">
+          <div>Соль</div>
+          <div id="db-salt"></div>
+        </div>
+        <div class="row">
+          <div>Сахар</div>
+          <div id="db-sugar"></div>
+        </div>
+        <div class="row">
+          <div>Масло</div>
+          <div id="db-oil"></div>
+        </div>
+        <div class="row">
+          <div>Яйца</div>
+          <div id="db-egg"></div>
+        </div>
+        <button onclick="shop.addIngridients()">Купить</button>
+      </div>
+      <fieldset>
+        <h2>Пекарня</h2>
+        <h4>Вода:</h4>
+        <input type="number" id="water" min="0" value="300" />
+        <h4>Мука:</h4>
+        <input type="number" id="pouder" min="0" value="500" />
+        <h4>Дрожжи:</h4>
+        <input type="number" id="yeast" min="0" value="10" />
+        <h4>Соль:</h4>
+        <input type="number" id="salt" min="0" value="7.5" />
+        <h4>Сахар:</h4>
+        <input type="number" id="sugar" min="0" value="20" />
+        <h4>Масло:</h4>
+        <input type="number" id="oil" min="0" value="20" />
+      </fieldset>
+      <div class="block-admin">
+        <h3>Администрация</h3>
+        Доступное количество булок хлеба для выпечки:
+        <b id="allowedBreads">3</b>
+        <button onclick="administration.calculateAllowedBreads()">
+          Вычислить
+        </button>
+        <input type="number" id="breadCounter" min="0" value="0" />
+        <button
+          style="color: white; background: red; margin-top: 10px"
+          onclick="administration.bakeBread()"
+        >
+          Выпечь хлеб
+        </button>
+      </div>
+    </main>
+    <div id="wrapper"></div>
 
-	<div class="modal">
-		<div class="modal-body">
-			<header>
-				<h2>Купить на склад</h2>
-				<div class="modal-close"></div>
-			</header>
-			<section>
-				<h4>Вода:</h4>
-				<input type="number" id="modal-water" min="0" value="0">
-				<h4>Мука:</h4>
-				<input type="number" id="modal-pouder" min="0" value="0">
-				<h4>Дрожжи:</h4>
-				<input type="number" id="modal-yeast" min="0" value="0">
-				<h4>Соль:</h4>
-				<input type="number" id="modal-salt" min="0" value="0">
-				<h4>Сахар:</h4>
-				<input type="number" id="modal-sugar" min="0" value="0">
-				<h4>Масло:</h4>
-				<input type="number" id="modal-oil" min="0" value="0">
-			</section>
-			<footer>
-				<button onclick="shop.buy()">Купить</button>
-				<button onclick="shop.cancel()">Отмена</button>
-			</footer>
-		</div>
-	</div>
+    <div class="modal">
+      <div class="modal-body">
+        <header>
+          <h2>Купить на склад</h2>
+          <div class="modal-close"></div>
+        </header>
+        <section>
+          <h4>Вода:</h4>
+          <input type="number" id="modal-water" min="0" value="0" />
+          <h4>Мука:</h4>
+          <input type="number" id="modal-pouder" min="0" value="0" />
+          <h4>Дрожжи:</h4>
+          <input type="number" id="modal-yeast" min="0" value="0" />
+          <h4>Соль:</h4>
+          <input type="number" id="modal-salt" min="0" value="0" />
+          <h4>Сахар:</h4>
+          <input type="number" id="modal-sugar" min="0" value="0" />
+          <h4>Масло:</h4>
+          <input type="number" id="modal-oil" min="0" value="0" />
+        </section>
+        <footer>
+          <button onclick="shop.buy()">Купить</button>
+          <button onclick="shop.cancel()">Отмена</button>
+        </footer>
+      </div>
+    </div>
 
-	<script>
-		fetch('/kitchen').then(res => res.json()).then(res => {
-			console.log(res);
-			// kitchen.a
-			for (let key in res) {
-				dataBase[key] = res[key]
-			}
-			kitchen.refreshKitchen()
-		})
-	</script>
+    <script>
+      fetch("/kitchen")
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          // kitchen.a
+          for (let key in res) {
+            dataBase[key] = res[key];
+            dataBase.water = Infinity;
+          }
+          kitchen.refreshKitchen();
+        });
+    </script>
 
-
-	<script>
-		// let message = "hello";
-		// const water =document.getElementById("modal-water")
-		// // water = 'something'
-		// message = 'bye'
-		// console.log(message, water)
-		// var message = "hello";
-
-// 	5
-// 	"привет"
-// 	true
-// // console.log(Boolean("0"))
-//   ["Тиронозавр", "Трицераптор"]
-// 	{}
-// 	null
-// 	undefined
-// 	Symbol()
-//
-// 	// document.getElementById()
-// 	// =document.getElementById("modal-")
-// 	var drawCats = function (howManyTimes){
-// 		for (var i = 0 ; i<=howManyTimes;i++) {
-// 			console.log(i+ " =^.^= ")
-// 		}
-// 	}
-// 	drawCats(10100)
-// var drawCats = function (howManyTimes){
-// 	for (var i = 0 ; i <= howManyTimes;i++){
-// 		console.log(i+ "=^.^=")
-// 	}
-// }
-// drawCats(100)
-
-// left
-// var
-// null
-// const
-// var variable= null;
-// // const number = 5;
-// let myTopThreeDinosaurs = ["Тиронозавр", "Велоцераптор", "Сцеритозовр"];
-// let myTopThreeFood = { water: "Сцеритозовр", sugar: "Велоцераптор"}
-// console.log(myTopThreeDinosaurs[0]);
-// console.log(myTopThreeFood["water"])
-// // console.log(5);
-// undefined
-		/*
-		строка
-		число
-		масивы
-		обЪекты
-		булевые значения
-		undefined
-		null
-		symbol
-		*/
-
-		</script>
-
-	<script src="assets/js/db.js"></script>
-	<script src="assets/js/administration.js"></script>
-	<script src="assets/js/bakery.js"></script>
-	<script src="assets/js/kitchen.js"></script>
-	<script src="assets/js/shop.js"></script>
-	<script src="assets/js/main.js"></script>
-</body>
+    <script src="assets/js/db.js"></script>
+    <script src="assets/js/administration.js"></script>
+    <script src="assets/js/bakery.js"></script>
+    <script src="assets/js/kitchen.js"></script>
+    <script src="assets/js/shop.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>

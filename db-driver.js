@@ -1,60 +1,65 @@
-
-const db = require('./creds.js');
-const MongoClient = require('mongodb').MongoClient;
+const db = require("./creds.js");
+const MongoClient = require("mongodb").MongoClient;
 const uri = `mongodb+srv://${db.username}:${db.pass}@cluster0-terx7.mongodb.net/bake-factory?retryWrites=true&w=majority`;
 // const uri = `mongodb+srv://${db.username}:${db.pass}@cluster0.lm9bo.mongodb.net/ha4apure?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 function insertPayment(id, from, to, goods) {
-  console.log("inspect",id, from, to, goods);
+  console.log("inspect", id, from, to, goods);
   return new Promise((resolve, reject) => {
-    client.connect(err => {
+    client.connect((err) => {
       // const collection = client.db("bake-factory").collection("stock")
-      client.db("bake-factory")
+      client
+        .db("bake-factory")
         .collection("stock")
         .insertOne({
-          id, from, to, goods
-        }).then( res => {
+          id,
+          from,
+          to,
+          goods,
+        })
+        .then((res) => {
           // console.log(res.result);
           resolve(res.result);
-        })
-    })
-  })
+        });
+    });
+  });
 }
 
 function getKitchen() {
   return new Promise((resolve, reject) => {
-    client.connect(error => {
-      client.db('bake-factory')
-        .collection('kitchen')
+    client.connect((error) => {
+      client
+        .db("bake-factory")
+        .collection("kitchen")
         .findOne({
-          id: 'kitchen'
+          id: "kitchen",
         })
-        .then(res => {
+        .then((res) => {
           console.log(res);
-          resolve(res)
-        })
-    })
-  })
+          resolve(res);
+        });
+    });
+  });
 }
 
 function updateKitchen(goods) {
-  delete goods._id
+  delete goods._id;
+  goods.id = "kitchen";
+  goods.water = Infinity;
   console.log(goods);
   return new Promise((resolve, reject) => {
-    client.connect(error => {
-      client.db('bake-factory')
-      .collection('kitchen')
-      .replaceOne(
-        {},
-        goods
-        ).then(res => {
-          
-          console.log(res)
-          resolve(res)
-        })
-    })
-  })
+    client.connect((error) => {
+      client
+        .db("bake-factory")
+        .collection("kitchen")
+        .replaceOne({}, goods)
+        .then((res) => {
+          console.log(res);
+          resolve(res);
+        });
+    });
+  });
 }
 // getKitchen()
 /*
@@ -75,5 +80,5 @@ function updateKitchen(goods) {
 module.exports = {
   insertPayment: insertPayment,
   getKitchen: getKitchen,
-  updateKitchen
-}
+  updateKitchen,
+};

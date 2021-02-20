@@ -1,48 +1,43 @@
-const express = require('express')
-const app = express()
-const port = 3000
-const path = require('path')
-const api = require('./api')
-const fs = require('fs')
-// let file = fs.readFileSync('./1.mp4', 'utf8')
-// console.log(file)
-app.use('/assets', express.static('assets'))
-app.use(express.json())
+const express = require("express");
+const app = express();
+const port = 3000;
+const path = require("path");
+const api = require("./api");
+const fs = require("fs");
 
-app.get('/', (req, res) => res.sendFile(path.resolve(__dirname + '/index.html')))
+app.use("/assets", express.static("assets"));
+app.use(express.json());
 
-app.get('/lol', (req, res) => {
-  const data = new api.goods()
-  console.log(req.json())
-  res.send({'Nik': 'pro'})
-})
+app.get("/", (req, res) =>
+  res.sendFile(path.resolve(__dirname + "/index.html"))
+);
 
-app.get('/kitchen', (req, res) => {
-  let data = new api.receipt()
-  console.log(data);
-  data.getKitchen().then(response => {
-    res.send(response)
-  })
-})
+app.get("/kitchen", (req, res) => {
+  let data = new api.receipt();
+  data.getKitchen().then((response) => {
+    console.log(response);
+    res.send(response);
+  });
+});
 
-app.post('/buy', (req, res) => {
-  // const data = new api.goods()
-  // console.log(req.json({requestBody: req.body}))
-  // console.log(req.body);
-  const {id, from, to, goods} = req.body;
-  console.log(id, from, to, goods);
+app.post("/buy", (req, res) => {
+  const { id, from, to, goods } = req.body;
   let newObj = new api.receipt(id, from, to, goods);
-  // console.log(Object.keys(api.receipt) )
-  // console.log('enter localhost', id, from, to, goods);
-  newObj.insert().then(b => {
-      console.log('index', b)
-      res.send(b)
-  })
-  // console.log(Object.keys(api.receipt));
-})
 
-app.get('/cek', (req, res) => {
-  res.send('my name is Nik')
-})
+  newObj.insert().then((b) => {
+    console.log("index", b);
+    res.send(b);
+  });
+});
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+app.post("/bake", (req, res) => {
+  const { id, from, to, goods } = req.body;
+  let newObj = new api.receipt(id, from, to, goods);
+  newObj.insert().then((b) => {
+    res.send(b);
+  });
+});
+
+app.listen(port, () =>
+  console.log(`Хлебопечка listening at http://localhost:${port}`)
+);
